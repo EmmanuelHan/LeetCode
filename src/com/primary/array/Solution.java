@@ -10,54 +10,55 @@ import java.util.Set;
 
 public class Solution {
 
-    public static int[] function1(int[] nums,int k) {
-        int size = nums.length-1;
-        int tmp = 0;
+   /**
+    * 从排序数组中删除重复项
+    */
+    public int removeDuplicates(int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        } else {
+            int number = 0;
+            for(int i=0; i<nums.length;i++){
+                if(nums[i]!=nums[number]){
+                   number++;
+                   nums[number] = nums[i];
+                }
+            }
+            return ++number;
+        }
+    }
+    
+    /**
+     * 购买股票的最佳时机II
+     */
+    public int maxProfit(int[] prices) {
+        int price = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i-1]) {
+                price += prices[i] - prices[i-1];
+            }
+        }
+        return price;
+    }
+    
+    /**
+     * 旋转数组
+     */
+    public void rotate(int[] nums, int k) {
+        int tmp1 = 0;
+        int len = nums.length - 1;//获取下标
         for(int i=0;i<k;i++) {
-         tmp = nums[i];
-         nums[i] = nums[size-i];
-         nums[size-i] = tmp;
+            tmp1 = nums[len];
+            for(int j=len;j>0;j--) {
+                nums[j] = nums[j-1];
+            }
+            nums[0] = tmp1;
         }
-        for(int i=0;i<size+1;i++) {
-            System.out.print(nums[i]+" ->");
-        }
-        return nums;
     }
-    
-    public static int[] function2(int[] nums,int k) {
-//        [1,2,3,4,5,6,7]
-//        [5,6,7,1,2,3,4]
-        int size = nums.length-1;
-        int tmp = 0;
-        for(int i=0;i<size;i++) {
-         tmp = nums[k];
-         nums[i] = nums[size-i];
-         nums[size-i] = tmp;
-        }
-        for(int i=0;i<size+1;i++) {
-            System.out.print(nums[i]+" ->");
-        }
-        return nums;
-    }
-    
-	public void RotateArray() {
-		int[] array = {8,2,0,4,1,4,2,1,0,6,6,2,5,6,6,2,7,9,4,1};
-		int k = 11939;
-		int tmp1 = 0;
-		int size = array.length;//数组大小
-		int len = array.length - 1;//循环次数
-		for(int i=0;i<k;i++) {
-			tmp1 = array[len];
-			for(int j=len;j>0;j--) {
-				array[j] = array[j-1];
-			}
-			array[0] = tmp1;
-		}
-		for(int i=0;i<size;i++) {
-			System.out.print(array[i]+">");
-		}
-	}
 	
+	/**
+	 * 存在重复
+	 */
 	public boolean exsitRepetition(int[] nums) {
 		boolean flag = false;
         Set<Integer> set = new HashSet<>();
@@ -70,6 +71,11 @@ public class Solution {
         return flag;
 	}
 	
+	/**
+	 * 只出现一次的数字
+	 * @param nums
+	 * @return
+	 */
 	public int singleNumber(int[] nums) {
         HashMap<Integer , Integer> map = new HashMap<>();
         int singleNumber = 0;
@@ -91,6 +97,9 @@ public class Solution {
 		return singleNumber;
     }
 	
+	/**
+	 * 两个数组的交集II
+	 */
 	public int[] intersect(int[] nums1, int[] nums2) {
         List<Integer> list1 = new ArrayList<>();
         for(int num : nums1) {
