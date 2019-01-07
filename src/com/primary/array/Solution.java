@@ -10,12 +10,42 @@ import java.util.Set;
 
 public class Solution {
 
+    public static int[] function1(int[] nums,int k) {
+        int size = nums.length-1;
+        int tmp = 0;
+        for(int i=0;i<k;i++) {
+         tmp = nums[i];
+         nums[i] = nums[size-i];
+         nums[size-i] = tmp;
+        }
+        for(int i=0;i<size+1;i++) {
+            System.out.print(nums[i]+" ->");
+        }
+        return nums;
+    }
+    
+    public static int[] function2(int[] nums,int k) {
+//        [1,2,3,4,5,6,7]
+//        [5,6,7,1,2,3,4]
+        int size = nums.length-1;
+        int tmp = 0;
+        for(int i=0;i<size;i++) {
+         tmp = nums[k];
+         nums[i] = nums[size-i];
+         nums[size-i] = tmp;
+        }
+        for(int i=0;i<size+1;i++) {
+            System.out.print(nums[i]+" ->");
+        }
+        return nums;
+    }
+    
 	public void RotateArray() {
 		int[] array = {8,2,0,4,1,4,2,1,0,6,6,2,5,6,6,2,7,9,4,1};
 		int k = 11939;
 		int tmp1 = 0;
-		int size = array.length;//数组长度
-		int len = array.length - 1;//获取下标
+		int size = array.length;//锟斤拷锟介长锟斤拷
+		int len = array.length - 1;//锟斤拷取锟铰憋拷
 		for(int i=0;i<k;i++) {
 			tmp1 = array[len];
 			for(int j=len;j>0;j--) {
@@ -86,4 +116,7 @@ public class Solution {
         }
         return result;
     }
+	
+	
+	
 }
