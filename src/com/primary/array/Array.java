@@ -17,11 +17,11 @@ public class Array {
 //		}
 		
 		//加一
-		int[] digits = {3,8,6,5,6,9,2,6,6,9};
+		int[] digits = {3,7,6,8,6,8,6,8,9,5,7,8,9,2,3,4,7,2,5,8,9,7,3,7,9,7,4,8,1,2,3,8,6,5,6,9,2,6,6,9};
 //		System.out.println(solution.plusOne(digits));
 		int[] plusOne = solution.plusOne(digits);
 		for(int i=0;i<plusOne.length;i++) {
-		    System.out.println(plusOne[i]);
+		    System.out.print(plusOne[i]);
 		}
 		
 	}

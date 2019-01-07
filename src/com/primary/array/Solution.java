@@ -1,5 +1,6 @@
 package com.primary.array;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -128,25 +129,22 @@ public class Solution {
 	
 	/**
 	 * *加一，给定一个数组，数组表示该数字的每一位，在该数字基础上加1，并重新退回到数组状态
+	 * *该代码不是经过自己的思考得知，需要加强练习
 	 * @param digits
 	 * @return
 	 */
 	public int[] plusOne(int[] digits) {
         int length = digits.length;
-        Long num = 0L;
-        for(int i=0;i<length;i++) {
-            num += digits[i] * (int) Math.pow(10, length-1-i);
+        for(int i=length-1;i>=0;i--) {
+            if(digits[i] < 9) {
+            	digits[i]++;
+            	return digits;
+            }
+            digits[i] = 0;
         }
-        num++;
-        String valueOf = String.valueOf(num);
-        int length2 = valueOf.length();
-        String[] nums = new String[length2];
-        nums = valueOf.split("");
-        int[] result = new int[length2];
-        for(int i=0;i<length2;i++) {
-            result[i] = Integer.valueOf(nums[i]);
-        }
-	    return result;
+        int[] result = new int[length + 1];
+        result[0] = 1;
+    	return result;
     }
 	
 }
