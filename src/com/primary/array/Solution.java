@@ -44,8 +44,8 @@ public class Solution {
 		int[] array = {8,2,0,4,1,4,2,1,0,6,6,2,5,6,6,2,7,9,4,1};
 		int k = 11939;
 		int tmp1 = 0;
-		int size = array.length;//���鳤��
-		int len = array.length - 1;//��ȡ�±�
+		int size = array.length;//数组大小
+		int len = array.length - 1;//循环次数
 		for(int i=0;i<k;i++) {
 			tmp1 = array[len];
 			for(int j=len;j>0;j--) {
