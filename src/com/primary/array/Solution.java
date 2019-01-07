@@ -126,6 +126,27 @@ public class Solution {
         return result;
     }
 	
-	
+	/**
+	 * *加一，给定一个数组，数组表示该数字的每一位，在该数字基础上加1，并重新退回到数组状态
+	 * @param digits
+	 * @return
+	 */
+	public int[] plusOne(int[] digits) {
+        int length = digits.length;
+        Long num = 0L;
+        for(int i=0;i<length;i++) {
+            num += digits[i] * (int) Math.pow(10, length-1-i);
+        }
+        num++;
+        String valueOf = String.valueOf(num);
+        int length2 = valueOf.length();
+        String[] nums = new String[length2];
+        nums = valueOf.split("");
+        int[] result = new int[length2];
+        for(int i=0;i<length2;i++) {
+            result[i] = Integer.valueOf(nums[i]);
+        }
+	    return result;
+    }
 	
 }
