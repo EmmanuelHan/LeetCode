@@ -1,6 +1,5 @@
 package com.primary.array;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -147,4 +146,86 @@ public class Solution {
     	return result;
     }
 	
+	/**
+	 * moveZeroes移动0
+	 */
+	public void moveZeroes(int[] nums) {
+        
+    }
+	
+	/**
+	 * twoSum 两数之和
+	 */
+	public int[] twoSum(int[] nums, int target) {
+        int[] result = {0,0};
+        int length = nums.length;
+        List<Integer> list = new ArrayList<>();
+        for(int num : nums) {
+            list.add(num);
+        }
+        for(int i=0;i<length;i++) {
+	       int num1 = target - nums[i];
+	       if(list.contains(num1)) {
+	           list.remove(i);
+	           for(int j=i+1;j<length;j++) {
+	               if(nums[j] == num1) {
+	                   result[0] = i;
+	                   result[1] = j;
+	                   return result;
+	               }
+	           }
+	       }
+	    }
+	    return result;
+    }
+	
+	/**
+	 * findMedianSortedArrays 寻找两个有序数组的中位数,
+	 * #难易程度  难
+	 */
+    public double findMedianSortedArrays(int[] A, int[] B) {
+        int m = A.length;
+        int n = B.length;
+        if (m > n) { // to ensure m<=n
+            int[] temp = A;A = B;B = temp;
+            int tmp = m;m = n;n = tmp;
+        }
+        int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
+        while (iMin <= iMax) {
+            int i = (iMin + iMax) / 2;
+            int j = halfLen - i;
+            if (i < iMax && B[j - 1] > A[i]) {
+                iMin = i + 1; // i is too small
+            } else if (i > iMin && A[i - 1] > B[j]) {
+                iMax = i - 1; // i is too big
+            } else { // i is perfect
+                int maxLeft = 0;
+                if (i == 0) {
+                    maxLeft = B[j - 1];
+                } else if (j == 0) {
+                    maxLeft = A[i - 1];
+                } else {
+                    maxLeft = Math.max(A[i - 1], B[j - 1]);
+                }
+                if ((m + n) % 2 == 1) {
+                    return maxLeft;
+                }
+
+                int minRight = 0;
+                if (i == m) {
+                    minRight = B[j];
+                } else if (j == n) {
+                    minRight = A[i];
+                } else {
+                    minRight = Math.min(B[j], A[i]);
+                }
+
+                return (maxLeft + minRight) / 2.0;
+            }
+        }
+        return 0.0;
+    }
+    
+    
+    
 }
