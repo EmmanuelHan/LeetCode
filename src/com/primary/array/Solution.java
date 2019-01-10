@@ -226,6 +226,28 @@ public class Solution {
         return 0.0;
     }
     
+    /**
+     * intersection两个数组的交集
+     * @return
+     */
+    public int[] intersection(int[] nums1, int[] nums2) {
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
+        for(int num : nums1) {
+            list1.add(num);
+        }
+        for(int num : nums2) {
+            if(list1.contains(num)) {
+                result.add(num);
+                list1.remove(num);
+            }
+        }
+        
+        
+        
+        return nums1;
+    }
     
     
 }
