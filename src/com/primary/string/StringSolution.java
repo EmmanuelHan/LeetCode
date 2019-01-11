@@ -1,6 +1,6 @@
 package com.primary.string;
 
-public class Solution {
+public class StringSolution {
 
     /**
      * #字符串转换整数 (atoi)<br/>
@@ -36,16 +36,27 @@ public class Solution {
      * #     因此返回 INT_MIN (−231) 。<br/>
      */
     public int myAtoi(String str) {
-        String trim = str.trim();
-        String[] split = trim.split("");
-        char[] c = str.toCharArray();
-        for(String string : split) {
-//            string.cha
-            
-            
-            
-            
-        }
+//        String trim = str.trim();
+//        String[] split = trim.split("");
+//        char[] c = str.toCharArray();
+//        for(String string : split) {
+////            string.cha
+//            
+//            
+//            
+//            
+//        }
         return 0;
+    }
+    
+
+    public String reverseString(String s) {
+        char[] charArray = s.toCharArray();
+        StringBuffer buffer = new StringBuffer();
+        for(int i=charArray.length-1;i>=0;i--) {
+            buffer.append(charArray[i]);
+        }
+        System.out.println(buffer);
+        return buffer.toString();
     }
 }
